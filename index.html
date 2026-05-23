@@ -619,7 +619,7 @@
     padding: 7rem 4rem;
     background: #0e0b18;
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
+    grid-template-columns: auto 1fr;
     gap: 6rem;
     align-items: start;
   }
@@ -628,23 +628,26 @@
 
   .leader-img-wrap {
     position: relative;
-    margin-bottom: 1.5rem;
+    display: inline-block;
+    margin-bottom: 2rem;
+    margin-right: 12px;
   }
 
   .leader-img {
-    width: 100%;
-    max-width: 340px;
     display: block;
+    width: 320px;
+    height: 400px;
+    object-fit: cover;
+    object-position: center top;
     filter: grayscale(100%);
-    image-rendering: auto;
   }
 
   .leader-img-frame {
     position: absolute;
-    bottom: -12px; right: -12px;
-    width: 100%;
-    max-width: 340px;
-    height: 100%;
+    bottom: -12px;
+    right: -12px;
+    width: 320px;
+    height: 400px;
     border: 1px solid var(--purple-heart);
     z-index: -1;
     pointer-events: none;
@@ -940,8 +943,8 @@
     .why-content { padding: 5rem 1.5rem; }
 
     #leadership { padding: 5rem 1.5rem; grid-template-columns: 1fr; gap: 3rem; }
-    .leader-img { max-width: 260px; }
-    .leader-img-frame { max-width: 260px; }
+    .leader-img { width: 240px; height: 300px; }
+    .leader-img-frame { width: 240px; height: 300px; }
     .achievements-grid { grid-template-columns: 1fr; }
 
     #summary { padding: 5rem 1.5rem; }
@@ -1260,7 +1263,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">Divine<span>Creative</span> Solution</div>
-  <div class="footer-copy">© 2025 Divine Creative Solution. All rights reserved.</div>
+  <div class="footer-copy">© 2026 Divine Creative Solution. All rights reserved.</div>
 </footer>
 
 <script>
