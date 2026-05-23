@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divine Creative Solution</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Helvetica stack — Bold Heavy for titles, Bold for subtitles */
+  :root {
+    --font-title: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-subtitle: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+    --fw-heavy: 900;
+    --fw-bold: 700;
+    --fw-light: 300;
+  }
+</style>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --vulcan: #130f1e;
+    --purple-heart: #6438da;
+    --purple-light: #7c52e8;
+    --purple-dim: rgba(100, 56, 218, 0.15);
+    --gray-suit: #c7c0d4;
+    --gunsmoke: #848c8a;
+    --white: #ffffff;
+    --off-white: #f2f0f7;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    background: var(--vulcan);
+    color: var(--white);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(19, 15, 30, 0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(100, 56, 218, 0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--purple-heart); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--gray-suit);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--purple-heart);
+    color: var(--white) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    transition: background 0.3s !important;
+  }
+
+  .nav-cta:hover { background: var(--purple-light) !important; color: var(--white) !important; }
+
+  /* SECTIONS */
+  section { position: relative; overflow: hidden; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10rem 4rem 5rem;
+    background: var(--vulcan);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.45;
+  }
+
+  .hero-orb-1 {
+    width: 600px; height: 600px;
+    top: -100px; left: -100px;
+    background: radial-gradient(circle, #6438da, transparent 70%);
+  }
+
+  .hero-orb-2 {
+    width: 400px; height: 400px;
+    bottom: 0; right: 5%;
+    background: radial-gradient(circle, #3b1f8a, transparent 70%);
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple-heart);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 30px; height: 1px;
+    background: var(--purple-heart);
+  }
+
+  .hero-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.4s forwards;
+  }
+
+  .hero-title .accent { color: var(--purple-heart); }
+
+  .hero-subtitle {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--gray-suit);
+    margin-bottom: 1.75rem;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.55s forwards;
+  }
+
+  .hero-desc {
+    max-width: 560px;
+    font-size: 0.95rem;
+    color: var(--gunsmoke);
+    line-height: 1.8;
+    margin-bottom: 2.75rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.7s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.85s forwards;
+  }
+
+  .btn-primary {
+    background: var(--purple-heart);
+    color: var(--white);
+    padding: 0.9rem 2.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--purple-light); transform: translateY(-2px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--gray-suit);
+    padding: 0.9rem 2.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1px solid rgba(199, 192, 212, 0.3);
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.3s, color 0.3s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover { border-color: var(--gray-suit); color: var(--white); transform: translateY(-2px); }
+
+  .hero-number-strip {
+    display: flex;
+    gap: 0;
+    max-width: 560px;
+    opacity: 0;
+    animation: fadeUp 0.9s 1s forwards;
+    border-top: 1px solid rgba(199, 192, 212, 0.15);
+    padding-top: 2.5rem;
+  }
+
+  .hero-stat {
+    flex: 1;
+    padding-right: 2rem;
+    border-right: 1px solid rgba(199, 192, 212, 0.15);
+    margin-right: 2rem;
+  }
+
+  .hero-stat:last-child {
+    border-right: none;
+    margin-right: 0;
+    padding-right: 0;
+  }
+  .hero-stat-num {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    color: var(--white);
+  }
+  .hero-stat-label {
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--gunsmoke);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .hero-stat-num span { color: var(--purple-heart); }
+
+  /* SCROLL INDICATOR */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 3rem; right: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 1.1s forwards;
+    pointer-events: none;
+  }
+
+  .scroll-indicator span {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gunsmoke);
+    writing-mode: vertical-rl;
+  }
+
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--purple-heart), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* CORE TAKEAWAYS */
+  #takeaways {
+    padding: 7rem 4rem;
+    background: #0e0b18;
+  }
+
+  .section-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple-heart);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: inline-block;
+    width: 20px; height: 1px;
+    background: var(--purple-heart);
+  }
+
+  .section-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .section-desc {
+    font-size: 0.95rem;
+    color: var(--gunsmoke);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 3.5rem;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(100, 56, 218, 0.2);
+  }
+
+  .pillar {
+    background: #0e0b18;
+    padding: 3rem 2.5rem;
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .pillar:hover { background: #130f25; }
+
+  .pillar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--purple-heart);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+
+  .pillar:hover::before { transform: scaleX(1); }
+
+  .pillar-num {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--purple-heart);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+
+  .pillar-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .pillar-text {
+    font-size: 0.87rem;
+    color: var(--gunsmoke);
+    line-height: 1.75;
+  }
+
+  /* SERVICES */
+  #services {
+    padding: 7rem 4rem;
+    background: var(--vulcan);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .services-left .section-title { font-size: clamp(2.5rem, 4vw, 4rem); }
+
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .service-item {
+    padding: 1.75rem 0;
+    border-bottom: 1px solid rgba(199, 192, 212, 0.1);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    transition: padding-left 0.3s;
+    cursor: default;
+  }
+
+  .service-item:hover { padding-left: 0.5rem; }
+  .service-item:first-child { border-top: 1px solid rgba(199, 192, 212, 0.1); }
+
+  .service-num {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--purple-heart);
+    letter-spacing: 0.1em;
+    padding-top: 0.25rem;
+    min-width: 24px;
+  }
+
+  .service-info {}
+
+  .service-name {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 1.05rem;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .service-text {
+    font-size: 0.82rem;
+    color: var(--gunsmoke);
+    line-height: 1.65;
+  }
+
+  .services-visual {
+    position: relative;
+    height: 500px;
+  }
+
+  .services-card {
+    position: absolute;
+    background: linear-gradient(135deg, rgba(100,56,218,0.25), rgba(100,56,218,0.05));
+    border: 1px solid rgba(100,56,218,0.3);
+    padding: 2.5rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .services-card-main {
+    width: 340px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+  .sc-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple-heart);
+    margin-bottom: 1rem;
+  }
+
+  .sc-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .sc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .sc-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--gray-suit);
+    background: rgba(199,192,212,0.1);
+    padding: 0.35rem 0.8rem;
+    border: 1px solid rgba(199,192,212,0.15);
+  }
+
+  .services-orb {
+    position: absolute;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(100,56,218,0.3), transparent 70%);
+    filter: blur(60px);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  /* WHY US */
+  #why-us {
+    padding: 0;
+    background: var(--purple-heart);
+    position: relative;
+    overflow: hidden;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .why-bg-text {
+    position: absolute;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: clamp(10rem, 20vw, 18rem);
+    color: rgba(255,255,255,0.05);
+    bottom: -2rem;
+    left: -1rem;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.05em;
+  }
+
+  .why-content {
+    padding: 7rem 4rem;
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+  }
+
+  .why-top-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .why-top-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px; height: 1px;
+    background: rgba(255,255,255,0.6);
+  }
+
+  .why-big {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: clamp(4rem, 10vw, 8rem);
+    line-height: 0.9;
+    color: var(--white);
+    letter-spacing: -0.03em;
+    margin-bottom: 3rem;
+  }
+
+  .why-quote {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    font-style: italic;
+    max-width: 600px;
+    line-height: 1.7;
+    border-left: 2px solid rgba(255,255,255,0.3);
+    padding-left: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .why-points {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .why-point {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .why-point-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+    flex-shrink: 0;
+  }
+
+  .why-point-text {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 0.03em;
+  }
+
+  /* LEADERSHIP */
+  #leadership {
+    padding: 7rem 4rem;
+    background: #0e0b18;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .leader-left {}
+
+  .leader-img-wrap {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .leader-img {
+    width: 100%;
+    max-width: 340px;
+    display: block;
+    filter: grayscale(100%);
+    image-rendering: auto;
+  }
+
+  .leader-img-frame {
+    position: absolute;
+    bottom: -12px; right: -12px;
+    width: 100%;
+    max-width: 340px;
+    height: 100%;
+    border: 1px solid var(--purple-heart);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .leader-name {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+
+  .leader-role {
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--purple-heart);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .leader-right {}
+
+  .leader-desc {
+    font-size: 0.92rem;
+    color: var(--gunsmoke);
+    line-height: 1.85;
+    margin-bottom: 2.5rem;
+  }
+
+  .achievements-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--purple-heart);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .achievements-label::before {
+    content: '';
+    display: inline-block;
+    width: 16px; height: 1px;
+    background: var(--purple-heart);
+  }
+
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .achievement-item {
+    padding: 1rem 1.25rem;
+    border-left: 2px solid var(--purple-heart);
+    background: rgba(100,56,218,0.06);
+  }
+
+  .achievement-text {
+    font-size: 0.82rem;
+    color: var(--gray-suit);
+    line-height: 1.5;
+  }
+
+  .certs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .cert-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--purple-heart);
+    border: 1px solid rgba(100,56,218,0.4);
+    padding: 0.35rem 0.9rem;
+  }
+
+  /* STRATEGIC SUMMARY */
+  #summary {
+    padding: 7rem 4rem;
+    background: var(--vulcan);
+  }
+
+  .summary-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .summary-strengths {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 2rem;
+  }
+
+  .strength-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(199,192,212,0.1);
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .strength-icon {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(100,56,218,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .strength-icon svg {
+    width: 16px; height: 16px;
+    stroke: var(--purple-heart);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+  }
+
+  .strength-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+
+  .strength-text {
+    font-size: 0.82rem;
+    color: var(--gunsmoke);
+    line-height: 1.65;
+  }
+
+  .summary-right .section-title { font-size: clamp(2rem, 3.5vw, 3rem); }
+
+  .summary-stat-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .summary-stat {
+    padding: 1.5rem;
+    border: 1px solid rgba(100,56,218,0.25);
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .summary-stat-val {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    color: var(--purple-heart);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .summary-stat-label {
+    font-size: 0.72rem;
+    color: var(--gunsmoke);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* CTA */
+  #cta {
+    padding: 8rem 4rem;
+    background: var(--vulcan);
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(100,56,218,0.18), transparent);
+    pointer-events: none;
+  }
+
+  .cta-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--purple-heart), transparent);
+    margin: 0 auto 2.5rem;
+  }
+
+  .cta-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: var(--white);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    line-height: 1.05;
+  }
+
+  .cta-desc {
+    font-size: 0.95rem;
+    color: var(--gunsmoke);
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.8;
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    background: #0a0812;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(100,56,218,0.2);
+  }
+
+  .footer-brand {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--gray-suit);
+  }
+
+  .footer-brand span { color: var(--purple-heart); }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: var(--gunsmoke);
+    letter-spacing: 0.06em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.25rem 1.5rem; }
+    .nav-links { display: none; }
+
+    #hero { padding: 8rem 1.5rem 5rem; }
+    .hero-number-strip { left: 1.5rem; gap: 2rem; }
+    .scroll-indicator { display: none; }
+
+    #takeaways { padding: 5rem 1.5rem; }
+    .pillars-grid { grid-template-columns: 1fr; }
+
+    #services { padding: 5rem 1.5rem; grid-template-columns: 1fr; gap: 3rem; }
+    .services-visual { height: 280px; }
+
+    .why-content { padding: 5rem 1.5rem; }
+
+    #leadership { padding: 5rem 1.5rem; grid-template-columns: 1fr; gap: 3rem; }
+    .leader-img { max-width: 260px; }
+    .leader-img-frame { max-width: 260px; }
+    .achievements-grid { grid-template-columns: 1fr; }
+
+    #summary { padding: 5rem 1.5rem; }
+    .summary-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+    #cta { padding: 5rem 1.5rem; }
+
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.75rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Divine<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#takeaways">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#leadership">Team</a></li>
+    <li><a href="#cta" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+  </div>
+
+  <p class="hero-eyebrow">Creative &amp; Strategic Development Partner</p>
+
+  <h1 class="hero-title">
+    Divine<br><span class="accent">Creative</span><br>Solution
+  </h1>
+
+  <p class="hero-subtitle">Creative Excellence Meets Operational Maturity</p>
+
+  <p class="hero-desc">
+    We combine creative excellence, strategic thinking, and operational maturity to help brands grow with confidence. Our team brings years of experience in storytelling, digital content production, and financial leadership.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#cta" class="btn-primary">Get in Touch</a>
+    <a href="#services" class="btn-secondary">Explore Our Services</a>
+  </div>
+
+  <div class="hero-number-strip">
+    <div class="hero-stat">
+      <div class="hero-stat-num">10<span>+</span></div>
+      <div class="hero-stat-label">Years Experience</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">IDR<span> 2B</span></div>
+      <div class="hero-stat-label">Cost Savings Delivered</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">100<span>%</span></div>
+      <div class="hero-stat-label">Client Confidence</div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- CORE TAKEAWAYS -->
+<section id="takeaways">
+  <div class="reveal">
+    <p class="section-tag">Core Takeaways</p>
+    <h2 class="section-title">Three Pillars of<br>Our Foundation</h2>
+    <p class="section-desc">Our company stands on three pillars — positioning Divine Creative Solution as a creative and strategic partner ready for modern business challenges.</p>
+  </div>
+
+  <div class="pillars-grid">
+    <div class="pillar reveal reveal-delay-1">
+      <div class="pillar-num">01</div>
+      <div class="pillar-title">What We Offer</div>
+      <p class="pillar-text">End-to-end creative and development services — from concept through execution, production, and strategic content planning — all with a premium, digital-forward approach.</p>
+    </div>
+    <div class="pillar reveal reveal-delay-2">
+      <div class="pillar-num">02</div>
+      <div class="pillar-title">Why Clients Trust Us</div>
+      <p class="pillar-text">Deep specialization in storytelling, creative strategy, and digital content production. Years of experience across the team delivering measurable results.</p>
+    </div>
+    <div class="pillar reveal reveal-delay-3">
+      <div class="pillar-num">03</div>
+      <div class="pillar-title">Financial Backbone</div>
+      <p class="pillar-text">Backed by a decade of financial leadership, we bring operational discipline, budgeting rigor, and investor-ready governance to every engagement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-left">
+    <div class="reveal">
+      <p class="section-tag">Creative &amp; Development Support</p>
+      <h2 class="section-title">What We<br>Deliver</h2>
+      <p class="section-desc">We provide end-to-end creative and development services supported by a premium visual identity. Modern, creative, digital-forward.</p>
+    </div>
+
+    <div class="services-list">
+      <div class="service-item reveal reveal-delay-1">
+        <span class="service-num">01</span>
+        <div class="service-info">
+          <div class="service-name">Concept Development</div>
+          <p class="service-text">Strategic ideation and creative direction that anchors every project in purpose and audience insight.</p>
+        </div>
+      </div>
+      <div class="service-item reveal reveal-delay-2">
+        <span class="service-num">02</span>
+        <div class="service-info">
+          <div class="service-name">Creative Execution</div>
+          <p class="service-text">Bringing concepts to life with precision craftsmanship and attention to brand coherence.</p>
+        </div>
+      </div>
+      <div class="service-item reveal reveal-delay-3">
+        <span class="service-num">03</span>
+        <div class="service-info">
+          <div class="service-name">Production Support</div>
+          <p class="service-text">Full-cycle production management from pre-production through final delivery and quality assurance.</p>
+        </div>
+      </div>
+      <div class="service-item reveal reveal-delay-4">
+        <span class="service-num">04</span>
+        <div class="service-info">
+          <div class="service-name">Strategic Content Planning</div>
+          <p class="service-text">Data-informed content strategies aligned with business goals and audience behaviors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="services-visual reveal">
+    <div class="services-orb"></div>
+    <div class="services-card services-card-main">
+      <div class="sc-label">Our Approach</div>
+      <div class="sc-title">Creative &amp; Development Support</div>
+      <p style="font-size:0.82rem; color: var(--gunsmoke); line-height:1.7;">A premium purple-themed visual identity underpins every service — modern, creative, and digital-forward in execution.</p>
+      <div class="sc-tags">
+        <span class="sc-tag">Storytelling</span>
+        <span class="sc-tag">Strategy</span>
+        <span class="sc-tag">Production</span>
+        <span class="sc-tag">Digital</span>
+        <span class="sc-tag">Content</span>
+        <span class="sc-tag">Creative</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why-us">
+  <div class="why-bg-text">Why us?</div>
+  <div class="why-content">
+    <p class="why-top-label reveal">Behind the Team</p>
+    <h2 class="why-big reveal">Why<br>us?</h2>
+    <p class="why-quote reveal">
+      "With years of experience, each team member brings deep specialization in storytelling, creative strategy, and digital content production."
+    </p>
+    <div class="why-points reveal">
+      <div class="why-point">
+        <div class="why-point-dot"></div>
+        <span class="why-point-text">Not just a creative agency — a strategic partner</span>
+      </div>
+      <div class="why-point">
+        <div class="why-point-dot"></div>
+        <span class="why-point-text">Business-aligned execution</span>
+      </div>
+      <div class="why-point">
+        <div class="why-point-dot"></div>
+        <span class="why-point-text">Precision at every stage</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <div class="leader-left reveal">
+    <div class="leader-img-wrap">
+      <img src="/mnt/user-data/uploads/r__.jpg" alt="Taufika (Fika) — Senior Finance Manager" class="leader-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='none'; document.getElementById('leader-placeholder').style.display='flex';">
+      <div class="leader-img-frame"></div>
+    </div>
+    <div id="leader-placeholder" style="display:none; width:280px; height:340px; background:rgba(100,56,218,0.1); border:1px solid rgba(100,56,218,0.3); align-items:center; justify-content:center; margin-bottom:1.5rem;">
+      <div style="text-align:center; color:var(--gunsmoke); font-size:0.8rem;">Leadership Photo</div>
+    </div>
+    <div class="leader-name">Taufika (Fika)</div>
+    <div class="leader-role">Senior Finance Manager · Chief Executive Officer</div>
+  </div>
+
+  <div class="leader-right">
+    <div class="reveal">
+      <p class="section-tag">Leadership Spotlight</p>
+      <h2 class="section-title" style="font-size: clamp(1.8rem, 3vw, 2.8rem);">10+ Years of Proven<br>Financial Leadership</h2>
+    </div>
+
+    <p class="leader-desc reveal">
+      Taufika brings over a decade of proven expertise in financial management, budgeting, strategic planning, and operational efficiency. She represents the financial backbone of Divine Creative Solution — ensuring every creative engagement is structurally sound and investor-ready.
+    </p>
+
+    <div class="achievements-label reveal">Key Achievements</div>
+
+    <div class="achievements-grid reveal">
+      <div class="achievement-item">
+        <p class="achievement-text">Improved cash flow stability &amp; accurate forecasting systems</p>
+      </div>
+      <div class="achievement-item">
+        <p class="achievement-text">Led digital transformation of financial reporting</p>
+      </div>
+      <div class="achievement-item">
+        <p class="achievement-text">Achieved IDR 2 billion in cost savings</p>
+      </div>
+      <div class="achievement-item">
+        <p class="achievement-text">Built a high-performing finance team</p>
+      </div>
+      <div class="achievement-item">
+        <p class="achievement-text">Ensured financial transparency for investor readiness</p>
+      </div>
+      <div class="achievement-item">
+        <p class="achievement-text">Led ERP implementation &amp; regulatory compliance</p>
+      </div>
+    </div>
+
+    <div class="achievements-label reveal">Certifications</div>
+    <div class="certs reveal">
+      <span class="cert-tag">Finance</span>
+      <span class="cert-tag">Accounting</span>
+      <span class="cert-tag">Human Resources</span>
+      <span class="cert-tag">Labor Law</span>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIC SUMMARY -->
+<section id="summary">
+  <div class="summary-inner">
+    <div>
+      <div class="reveal">
+        <p class="section-tag">What This All Means</p>
+        <h2 class="section-title">Positioned for<br>Long-Term<br>Partnership</h2>
+        <p class="section-desc" style="margin-bottom:0;">Divine Creative Solution blends creative strength, strategic thinking, and operational maturity — reducing risk for clients and increasing confidence in long-term engagement.</p>
+      </div>
+
+      <div class="summary-stat-row reveal">
+        <div class="summary-stat">
+          <div class="summary-stat-val">10+</div>
+          <div class="summary-stat-label">Years Financial Leadership</div>
+        </div>
+        <div class="summary-stat">
+          <div class="summary-stat-val">IDR 2B</div>
+          <div class="summary-stat-label">Documented Cost Savings</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-strengths">
+      <div class="strength-item reveal reveal-delay-1">
+        <div class="strength-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div>
+          <div class="strength-title">Strong Financial Governance</div>
+          <p class="strength-text">Every project backed by rigorous financial oversight and accountability frameworks.</p>
+        </div>
+      </div>
+      <div class="strength-item reveal reveal-delay-2">
+        <div class="strength-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <div>
+          <div class="strength-title">Professionalized Operations</div>
+          <p class="strength-text">Systematic processes that scale with your business needs and complexity.</p>
+        </div>
+      </div>
+      <div class="strength-item reveal reveal-delay-3">
+        <div class="strength-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div>
+          <div class="strength-title">Investor-Ready Structure</div>
+          <p class="strength-text">Transparent governance and reporting that builds confidence at every level.</p>
+        </div>
+      </div>
+      <div class="strength-item reveal reveal-delay-4">
+        <div class="strength-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div>
+          <div class="strength-title">Scalable Systems</div>
+          <p class="strength-text">ERP and operational infrastructure built to grow alongside your ambitions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-bg"></div>
+  <div class="cta-line reveal"></div>
+  <h2 class="cta-title reveal">Work<br>With Us</h2>
+  <p class="cta-desc reveal">Whether you need a creative partner, strategic guidance, or operational leadership, Divine Creative Solution is ready to support your growth.</p>
+  <div class="cta-actions reveal">
+    <a href="mailto:hello@divinecreative.com" class="btn-primary">Contact Us</a>
+    <a href="#summary" class="btn-secondary">View Company Profile</a>
+    <a href="#leadership" class="btn-secondary">Meet the Team</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Divine<span>Creative</span> Solution</div>
+  <div class="footer-copy">© 2025 Divine Creative Solution. All rights reserved.</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
